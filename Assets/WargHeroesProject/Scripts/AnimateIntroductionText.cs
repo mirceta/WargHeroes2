@@ -10,7 +10,7 @@ public class AnimateIntroductionText : MonoBehaviour {
 	Image img;
 	int timeElapsed = 0;
 	float timeSinceEndDialog = 0;
-	double timeModifier = 0.1;
+	double timeModifier = 0.6;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +27,7 @@ public class AnimateIntroductionText : MonoBehaviour {
 			modifyText ();
 		} else if (timeElapsed < 2500 * timeModifier) {
 
-			timeSinceEndDialog += 0.002f;
+			timeSinceEndDialog += 0.01f;
 			timeSinceEndDialog = Mathf.Min (1.0f, timeSinceEndDialog);
 
 			text.fontSize = 50;
@@ -39,14 +39,13 @@ public class AnimateIntroductionText : MonoBehaviour {
 			RectTransform rect = this.GetComponent<RectTransform> ();
 			Vector3 pos = rect.position;
 			pos.x = 670;
-			pos.y = 130;
-			Debug.Log (pos.x + " " + pos.y);
+			pos.y = 0;
 			rect.position = pos;
 
 		} else if (timeElapsed < 2999  * timeModifier) {
 			timeSinceEndDialog = 0.0f;
 		} else if (timeElapsed < 3200  * timeModifier) {
-			timeSinceEndDialog += 0.005f;
+			timeSinceEndDialog += 0.01f;
 			fadeToWhite ();
 		} else {
 			// Transition to next level
